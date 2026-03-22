@@ -1,7 +1,7 @@
 """detect_anomaly: Flag unusual price movements and volume spikes."""
 
 import json
-from datetime import datetime, timedelta
+from datetime import datetime, UTC
 
 import numpy as np
 import pandas as pd
@@ -101,7 +101,7 @@ async def detect_anomaly(
 
         result = {
             "status": "ok",
-            "timestamp": datetime.utcnow().isoformat(),
+            "timestamp": datetime.now(UTC).isoformat(),
             "parameters": {
                 "lookback_days": lookback_days,
                 "z_threshold": z_threshold,

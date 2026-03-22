@@ -1,7 +1,7 @@
 """compliance_check: Validate portfolio against exposure limits."""
 
 import json
-from datetime import datetime
+from datetime import datetime, UTC
 
 import yfinance as yf
 
@@ -102,7 +102,7 @@ async def compliance_check(
 
         result = {
             "status": "ok",
-            "timestamp": datetime.utcnow().isoformat(),
+            "timestamp": datetime.now(UTC).isoformat(),
             "compliant": is_compliant,
             "parameters": {
                 "max_single_stock_pct": max_single_stock_pct,

@@ -1,7 +1,7 @@
 """analyze_risk: Calculate portfolio risk metrics."""
 
 import json
-from datetime import datetime, timedelta
+from datetime import datetime, UTC,timedelta
 
 import numpy as np
 import pandas as pd
@@ -76,7 +76,7 @@ async def analyze_risk(
 
         result = {
             "status": "ok",
-            "timestamp": datetime.utcnow().isoformat(),
+            "timestamp": datetime.now(UTC).isoformat(),
             "parameters": {
                 "window_days": window_days,
                 "confidence_level": confidence_level,

@@ -1,7 +1,7 @@
 """get_portfolio: Retrieve current portfolio holdings and P&L."""
 
 import json
-from datetime import datetime
+from datetime import datetime, UTC
 
 import yfinance as yf
 
@@ -65,7 +65,7 @@ async def get_portfolio(ticker: str | None = None) -> str:
 
         result = {
             "status": "ok",
-            "timestamp": datetime.utcnow().isoformat(),
+            "timestamp": datetime.now(UTC).isoformat(),
             "summary": {
                 "total_value": round(total_value, 2),
                 "total_cost": round(total_cost, 2),
